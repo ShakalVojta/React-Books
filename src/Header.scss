@@ -1,0 +1,11 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em;
+    background-color: gray;
+    color: white;
+
+    &__sitename {
+        font-weight: bold;
+    }
+}
