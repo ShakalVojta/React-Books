@@ -4,6 +4,7 @@ import TopMenuItem from "./TopMenuItem";
 
 export default function TopMenu({ currentItem, setCurrentItem }) {
     const [open, setOpen] = useState(false);
+
     const handleCloseMenu = () => {
         setOpen(false);
     }
