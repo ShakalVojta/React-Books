@@ -6,6 +6,7 @@ import MainContent from "./MainContent";
 import CurrencyContext from "./CurrencyContext.js";
 import Context from "./Context";
 import reducer from "./reducer";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   const [currentItem, setCurrentItem] = useState("");
@@ -25,6 +26,7 @@ function App() {
   );
 
   return (
+    <BrowserRouter>
     <Context.Provider
       value={{ state: contextValue, dispatch: setContextValue }}
     >
@@ -40,6 +42,7 @@ function App() {
         </div>
       </CurrencyContext.Provider>
     </Context.Provider>
+    </BrowserRouter>
   );
 }
 

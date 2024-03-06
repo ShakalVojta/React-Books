@@ -1,61 +1,48 @@
-import './MainContent.scss';
-import CurrencyContext from './CurrencyContext.js';
-import { useContext, useState } from 'react';
-import Context from './Context';
-import Homepage from './Homepage';
-
+import "./MainContent.scss";
+import CurrencyContext from "./CurrencyContext.js";
+import { useContext, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Context from "./Context";
+import Homepage from "./Homepage";
+import Subpage from "./Subpage";
+import AboutUs from "./AboutUs";
+import Contact from "./Contact";
+import BookDetail from "./BookDetail";
 
 export default function MainContent({ currentItem }) {
-    const { currency} = useContext(CurrencyContext);
+  const { currency } = useContext(CurrencyContext);
 
-    const {state, dispatch} = useContext(Context)
+  const { state, dispatch } = useContext(Context);
 
-    const changeCurrency = () => {
-        dispatch( {
-            type: 'currency/set',
-            payload: 'EUR'
-        }
+  const changeCurrency = () => {
+    dispatch({
+      type: "currency/set",
+      payload: "EUR",
+    });
+  };
 
-        )
-    }
-
-
-    return (
-        <>
-        
-        <div>
+  return (
+    <>
+      <div>
         <p>Selected Currency: {currency}</p>
-        <p>Theme: {state.theme}</p>
         <p>Language: {state.language}</p>
         <p>Currency: {state.currency}</p>
-        <p>Shopping Cart: {state.shoppingCart.join(', ')}</p>
-        <button onClick={ changeCurrency }>Change something</button>
+        <p>Shopping Cart: {state.shoppingCart.join(", ")}</p>
+        <button onClick={changeCurrency}>Change something</button>
       </div>
+
+      <main className="main">
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+
+          <Route path="/" element={<Subpage />}>
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/book/:id" element={<BookDetail />} />
+          </Route>
+        </Routes>
+      </main>
       
-        <main className="main">
-            {
-                currentItem === ''
-                    && (
-                        <p>Welcome!</p>
-                    )
-            }
-
-            {
-                currentItem === 'about'
-                    && (
-                        <p>About us: ...</p>
-                    )
-            }
-
-            {
-                currentItem === 'contact'
-                    && (
-                        <p>Please contact us</p>
-                    )
-            }
-        </main>
-        <Homepage/>
-        </>
-    )
-
+    </>
+  );
 }

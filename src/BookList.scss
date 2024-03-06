@@ -6,6 +6,7 @@
     text-align: center;
     margin-bottom: 20px;
   }
+
   .pagination-buttons {
     margin-top: 10px;
 
@@ -24,6 +25,7 @@
       }
     }
   }
+
   .book {
     background-color: #fff; 
     padding: 20px;
@@ -36,6 +38,21 @@
 
     p {
       margin-bottom: 0;
+    }
+
+    a {
+      display: inline-block;
+      background-color: #27ae60;
+      color: white;
+      padding: 8px 12px;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-top: 10px;
+      font-size: 14px; // Add font size
+
+      &:hover {
+        background-color: #219b56;
+      }
     }
   }
 }

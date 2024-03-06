@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import "./BookList.scss";
 import CurrentyContext from "./CurrencyContext";
+import { Link } from "react-router-dom";
 
 export default function BookList() {
   const [books, setBooks] = useState([]);
@@ -64,6 +65,8 @@ export default function BookList() {
           ) : (
             <p>No author information available</p>
           )}
+
+          <Link to={ `/book/${book.id}`}>Detail</Link>
         </div>
       ))}
     </div>
